@@ -50,7 +50,7 @@ function NavBar() {
         <AppBar position="static" className='bg-emerald-500'>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <Image src={logo} alt='logo' className='w-20'></Image>
+                    <Image src={logo} alt='logo' className='w-28'></Image>
 
                     <Box className="w-full text-center">
                         {NavItems.map((item) => (
