@@ -1,9 +1,11 @@
 import LatestNews from "@/components/ui/LatestNews";
 import World from "@/components/ui/World";
+import getCategoryNews from "@/utils/getCategoryNews";
 
 
 
 const HomePage = async () => {
+  const news = await getCategoryNews('all-news');
 
   return (
     <div className="grid grid-cols-12 px-28 my-5 gap-5">
@@ -11,13 +13,13 @@ const HomePage = async () => {
         <h1 className="text-xl font-semibold text-gray-600 mt-3 mb-5 border-b-4 pl-8 pb-2 relative">Latest News
           <div className="border-b-4 border-rose-400 w-48 absolute -bottom-1 left-0"></div>
         </h1>
-        <LatestNews></LatestNews>
+        <LatestNews news={news}></LatestNews>
       </div>
       <div className="col-span-4">
         <h1 className="text-xl font-semibold text-gray-600 mt-3 mb-5 border-b-4 pl-8 pb-2 relative">World
           <div className="border-b-4 border-rose-400 w-36 absolute -bottom-1 left-0"></div>
         </h1>
-        <World></World>
+        <World news={news[2]}></World>
       </div>
     </div>
   );

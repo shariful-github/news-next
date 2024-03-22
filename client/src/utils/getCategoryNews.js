@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const getCategoryNews = async (categoryId) => {
-    const res = await axios.get(`http://localhost:5000/news?category=${categoryId}`, {
+    const res = await axios.get(`https://news-next-server.vercel.app/news?category=${categoryId}`, {
         cache: 'no-store'
     });
     return res.data.data;
