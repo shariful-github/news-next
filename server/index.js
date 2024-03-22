@@ -25,26 +25,27 @@ const client = new MongoClient(uri, {
 
 async function run() {
     try {
-        // await client.connect();
+        await client.connect();
         const db = client.db("news-next");
         const categoriesCollection = db.collection("categories");
         const newsCollection = db.collection("news");
         // get all news
         app.get("/all-news", async (req, res) => {
-            const allNews = await newsCollection.find({}).toArray();
+            const allNews = await newsCollection.find().toArray();
             res.send({ status: true, message: "success", data: allNews });
         });
 
         // get specific news
         app.get("/news/:id", async (req, res) => {
             const id = req.params.id;
-            const news = await newsCollection.findOne({ _id: ObjectId(id) });
-            res.send({ status: true, message: "success", data: news });
+            const query = { _id: id };
+            const news = await newsCollection.findOne(query);
+            res.send({ news });
         });
 
         // get all categories
         app.get("/categories", async (req, res) => {
-            const categories = await categoriesCollection.find({}).toArray();
+            const categories = await categoriesCollection.find().toArray();
             res.send({ status: true, message: "success", data: categories });
         });
 
@@ -53,7 +54,7 @@ async function run() {
             const name = req.query.category;
             let newses = [];
             if (name == "all-news") {
-                newses = await newsCollection.find({}).toArray();
+                newses = await newsCollection.find().toArray();
                 return res.send({ status: true, message: "success", data: newses });
             }
             newses = await newsCollection
@@ -61,8 +62,8 @@ async function run() {
                 .toArray();
             res.send({ status: true, message: "success", data: newses });
         });
-        // await client.db("admin").command({ ping: 1 });
-        // console.log("Pinged your deployment. You successfully connected to MongoDB!");
+        await client.db("admin").command({ ping: 1 });
+        console.log("Pinged your deployment. You successfully connected to MongoDB!");
     } finally {
     }
 };

@@ -27,7 +27,7 @@ const NavItems = [
     },
     {
         route: 'Category',
-        pathname: 'category'
+        pathname: 'categories/all-news'
     },
     {
         route: 'News',
@@ -54,7 +54,7 @@ function NavBar() {
 
                     <Box className="w-full text-center">
                         {NavItems.map((item) => (
-                            <Link key={item.route} href={item.pathname}>
+                            <Link key={item.route} href={`/${item.pathname}`}>
                                 <Button className='text-white'>{item.route}</Button>
                             </Link>
                         ))}

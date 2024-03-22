@@ -3,7 +3,8 @@ import World from "@/components/ui/World";
 
 
 
-const HomePage = () => {
+const HomePage = async () => {
+
   return (
     <div className="grid grid-cols-12 px-28 my-5 gap-5">
       <div className="col-span-8">

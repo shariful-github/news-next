@@ -5,11 +5,12 @@ import Typography from '@mui/material/Typography';
 import { Button, CardActionArea } from '@mui/material';
 import bitcoin from '@/assets/bitcoin1.jpg';
 import Image from 'next/image';
+
 const LatestNews = () => {
+
     return (
         <div>
             <Card>
-                {/* <CardActionArea> */}
                 <CardMedia>
                     <Image src={bitcoin} alt=''></Image>
                 </CardMedia>
@@ -22,7 +23,6 @@ const LatestNews = () => {
                         Bitcoin fell 6.4% to $60,969 on Wednesday, hitting its two-week low ahead of the Federal Reserve's policy decision and commentary later in the day. Concurrently, Ethereum, the second-largest cryptocurrency, also saw a decline of 9%, falling to $3,075.
                     </Typography>
                 </CardContent>
-                {/* </CardActionArea> */}
             </Card>
             <div className='grid grid-cols-2 gap-5 mt-5'>
                 <Card>
